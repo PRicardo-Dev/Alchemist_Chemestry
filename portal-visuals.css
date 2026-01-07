@@ -1,0 +1,106 @@
+/* =======================================================
+   Foco: Elementos decorativos e personagens de FMA
+   ======================================================= */
+
+/* 1. MARCA D'ÁGUA NO FUNDO DO TEXTO (Círculo de Transmutação) */
+/* Cria um elemento fantasma atrás do texto */
+.content-area {
+    position: relative; /* Necessário para posicionar o fundo */
+    z-index: 1;
+}
+
+.content-area::before {
+    content: '';
+    position: fixed; /* Fica fixo mesmo rolando a tela */
+    top: 50%;
+    left: 60%; /* Ajuste para centralizar na área de leitura */
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    z-index: -1; /* Fica ATRÁS do texto */
+    opacity: 0.05; /* Bem transparente para não atrapalhar a leitura (5%) */
+    pointer-events: none; /* Deixa clicar no texto através da imagem */
+    
+    /* COLOQUE AQUI O LINK DE UM CÍRCULO DE TRANSMUTAÇÃO (PNG SEM FUNDO) */
+    background-image: url('images/Transmutation_Circle-removebg-preview.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    /* Animação opcional: Girar lentamente */
+    animation: rotateCircle 60s linear infinite;
+}
+
+@keyframes rotateCircle {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+/* 2. ALPHONSE NO MENU LATERAL (Sidebar) */
+.sidebar {
+    position: relative;
+    /* Adicionamos espaço extra embaixo para a imagem não cobrir o botão de sair */
+    padding-bottom: 200px; 
+}
+
+.sidebar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0; /* Alinhado à direita do menu */
+    width: 100%; /* Largura da imagem */
+    height: 250px; /* Altura da imagem */
+    opacity: 0.8;
+    pointer-events: none;
+
+    /* Sugestão: Alphonse sentado ou apenas o capacete */
+    background-image: url('images/Alphonse-Elric-PNG-HD.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+
+
+/* 3. ÍCONE DO EDWARD NAS CITAÇÕES (Quote Box) */
+.quote-box {
+    position: relative;
+    background: rgba(20, 20, 20, 0.5); /* Fundo levemente mais escuro */
+    border-radius: 8px;
+    padding-right: 80px; /* Abre espaço na direita para o bonequinho */
+}
+
+.quote-box::after {
+    content: '';
+    position: absolute;
+    top: -20px; /* Sai um pouco pra fora da caixa */
+    right: 10px;
+    width: 60px;
+    height: 80px;
+    
+    /* COLOQUE AQUI UM CHIBI DO ED OU O SÍMBOLO FLAMEL */
+    background-image: url('images/edchibi-removebg-preview.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+/* 4. TÍTULOS COM DETALHE ALQUÍMICO */
+.lesson-content h2::before {
+    content: '⟡'; /* Um losango/cristal decorativo antes do título */
+    color: var(--ed-red);
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* RESPONSIVIDADE PARA VISUAIS */
+@media (max-width: 768px) {
+    /* No celular, escondemos o Alphonse da sidebar para não atrapalhar */
+    .sidebar::after {
+        display: none;
+    }
+    /* Diminuímos a marca d'água */
+    .content-area::before {
+        width: 300px;
+        height: 300px;
+    }
+}

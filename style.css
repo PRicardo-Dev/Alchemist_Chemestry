@@ -1,0 +1,380 @@
+:root {
+    /* Paleta de Cores Fullmetal */
+    --ed-red: #8a0b0b;        /* Vermelho Sangue */
+    --ed-dark-red: #4a0000;   /* Vermelho Escuro */
+    --military-blue: #1c2e4a; /* Azul Militar de Amestris */
+    --gold: #d4af37;          /* Dourado Metálico */
+    --silver: #c0c0c0;        /* Prata Automail */
+    --bg-dark: #0a0a0a;       /* Preto Fundo */
+    
+    /* Fontes */
+    --font-title: 'Cinzel', serif;
+    --font-text: 'Lato', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--bg-dark);
+    font-family: var(--font-text);
+    overflow: hidden; /* Impede rolagem na tela de login */
+    position: relative;
+}
+
+/* --- CONFIGURAÇÃO DA IMAGEM DE FUNDO --- */
+.bg-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* Fica atrás de tudo */
+    background-image: url('images/fullmetalimages.jpg'); 
+    background-size: cover; /* A imagem cobre a tela toda */
+    background-position: center;
+}
+
+/* Camada escura para o texto não brigar com a imagem */
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.75); /* Preto com 75% de transparência */
+    z-index: -1;
+}
+
+/* --- TELA DE LOGIN (Centralização e Layout) --- */
+#login-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px; /* Garante que não encoste na borda em celulares */
+}
+
+/* O Cartão de Login (Design de Livro/Dossiê) */
+.login-card {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d); /* Degradê sutil */
+    border: 2px solid var(--ed-red);
+    width: 100%;
+    max-width: 400px; /* Largura máxima no PC */
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(138, 11, 11, 0.4); /* Brilho vermelho */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Detalhe estético: Borda dupla dourada interna */
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 5px; left: 5px; right: 5px; bottom: 5px;
+    border: 1px solid rgba(212, 175, 55, 0.3); /* Dourado transparente */
+    pointer-events: none; /* Deixa clicar através disso */
+}
+
+/* --- CABEÇALHO DO CARD --- */
+.card-header {
+    text-align: center;
+    padding: 2rem 1rem 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--ed-red);
+}
+
+.symbol-container {
+    font-size: 3rem;
+    color: var(--ed-red);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px var(--ed-red); /* Brilho neon */
+}
+
+.card-header h2 {
+    font-family: var(--font-title);
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+}
+
+.subtitle {
+    font-size: 0.75rem;
+    color: var(--silver);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 5px;
+}
+
+/* --- CORPO E INPUTS --- */
+.card-body {
+    padding: 2rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    color: var(--silver);
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    font-family: var(--font-title);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05); /* Fundo quase transparente */
+    border: 1px solid #333;
+    border-left: 3px solid var(--ed-red); /* Detalhe lateral vermelho */
+    color: white;
+    font-family: monospace; /* Fonte estilo máquina de escrever para a senha */
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--gold); /* Borda fica dourada ao clicar */
+}
+
+/* --- MENSAGEM DE ERRO --- */
+.error-message {
+    color: #ff4444;
+    font-size: 0.85rem;
+    text-align: center;
+    min-height: 20px; /* Reserva espaço para não pular a tela */
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+/* --- BOTÃO --- */
+.transmute-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--ed-red);
+    color: white;
+    border: none;
+    font-family: var(--font-title);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.transmute-btn:hover {
+    background: var(--ed-dark-red);
+    letter-spacing: 3px; /* As letras se separam ao passar o mouse */
+    box-shadow: 0 0 15px var(--ed-red);
+}
+
+/* --- RODAPÉ --- */
+.card-footer {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid #333;
+}
+
+.card-footer p {
+    font-style: italic;
+    font-size: 0.7rem;
+    color: #666;
+}
+
+/* --- ANIMAÇÕES (Shake de Erro e Fade de Sucesso) --- */
+
+/* Animação de tremer (para erro) */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.shake-animation {
+    animation: shake 0.4s ease-in-out;
+}
+
+/* Animação de Transmutação (Flash Branco) */
+@keyframes transmutationLight {
+    0% { opacity: 0; }
+    50% { opacity: 1; background: white; }
+    100% { opacity: 0; }
+}
+
+.flash-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* =========================================
+   ESTILOS DO PORTAL DA VERDADE (Plataforma)
+   ========================================= */
+
+/* Remove a imagem de fundo do login na página interna para facilitar leitura */
+body.platform-body {
+    background-image: none;
+    background-color: var(--bg-dark);
+    overflow: auto; /* Permite rolar a página se o texto for grande */
+}
+
+/* Container que segura o Menu e o Conteúdo lado a lado */
+.platform-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- BARRA LATERAL (Sidebar) --- */
+.sidebar {
+    width: 280px; /* Largura fixa */
+    background-color: #111;
+    border-right: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    flex-shrink: 0; /* Não deixa a barra encolher */
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 3rem;
+    color: var(--ed-red);
+}
+
+.flamel-small {
+    font-size: 1.5rem;
+}
+
+.modules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1; /* Ocupa o espaço disponível empurrando o perfil pra baixo */
+}
+
+.module-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    text-decoration: none;
+    color: var(--silver);
+    border-radius: 4px;
+    transition: 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.module-item:hover, .module-item.active {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+    border-left: 3px solid var(--ed-red); /* Marcação vermelha na esquerda */
+}
+
+.module-number {
+    font-weight: bold;
+    color: var(--gold);
+    margin-right: 10px;
+    font-family: var(--font-title);
+}
+
+.user-profile {
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+    margin-top: auto;
+}
+
+.logout-btn {
+    display: block;
+    margin-top: 5px;
+    color: #ff4444;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+/* --- ÁREA DE CONTEÚDO --- */
+.content-area {
+    flex-grow: 1; /* Ocupa todo o resto da tela */
+    padding: 3rem;
+    overflow-y: auto; /* Se o texto for grande, rola só aqui */
+}
+
+.content-header h1 {
+    font-family: var(--font-title);
+    color: var(--gold);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.breadcrumb {
+    color: var(--silver);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    opacity: 0.7;
+}
+
+.lesson-container {
+    max-width: 800px; /* Limita a largura para não cansar o olho em telas gigantes */
+}
+
+.text-content p {
+    font-size: 1.1rem;
+    line-height: 1.8; /* Espaçamento bom para leitura */
+    margin-bottom: 1.5rem;
+    color: #ddd;
+}
+
+.quote-box {
+    border-left: 4px solid var(--ed-red);
+    padding-left: 1rem;
+    font-style: italic;
+    color: var(--silver);
+    margin: 2rem 0;
+    font-family: var(--font-title);
+}
+
+/* Seção de Vídeo */
+.video-section h3 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: var(--ed-red);
+    font-family: var(--font-title);
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+/* RESPONSIVIDADE (Para Celular) */
+@media (max-width: 768px) {
+    .platform-container {
+        flex-direction: column; /* No celular fica um embaixo do outro */
+    }
+    
+    .sidebar {
+        width: 100%;
+        padding: 1rem;
+        border-right: none;
+        border-bottom: 1px solid #333;
+    }
+
+    .content-area {
+        padding: 1.5rem;
+    }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal da Verdade - Acesso Restrito</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-image-container"></div>
+    <div class="bg-overlay"></div>
+
+    <div id="login-screen">
+        <div class="login-card">
+            
+            <div class="card-header">
+                <div class="symbol-container">
+                    <span class="flamel">☤</span>
+                </div>
+                <h2>O Portão da Verdade </h2>
+                <p class="subtitle">Amestris Military Command</p>
+            </div>
+
+            <div class="card-body">
+                <div class="input-group">
+                    <label for="username">Alquimista (ID)</label>
+                    <input type="text" id="username" placeholder="Ex: Edward Elric" autocomplete="off">
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Código da Verdade</label>
+                    <input type="password" id="password" placeholder="Min. 6 carac. (Letras e Números)">
+                </div>
+
+                <div id="error-msg" class="error-message"></div>
+
+                <button class="transmute-btn" onclick="performLogin()">
+                    Iniciar Transmutação
+                </button>
+            </div>
+            
+            <div class="card-footer">
+                <p>"A humanidade não pode obter nada sem dar algo em troca..."</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="platform-screen" style="display: none;">
+        <h1 style="color: white; text-align: center; margin-top: 20%;">Bem-vindo ao Portal</h1>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

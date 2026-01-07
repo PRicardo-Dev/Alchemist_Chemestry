@@ -1,0 +1,318 @@
+/* =======================================================
+   ARQUIVO: Modulos/Modulo01/style.css
+   Descrição: Estilo Completo (Layout + Visuais)
+   ======================================================= */
+
+/* --- 1. VARIÁVEIS E BASE (Cores do Fullmetal) --- */
+:root {
+    --ed-red: #8a0b0b;       /* Vermelho Sangue */
+    --ed-black: #1a1a1a;     /* Preto Roupa */
+    --gold: #d4af37;         /* Dourado Cabelo/Olhos */
+    --silver: #c0c0c0;       /* Prata Automail */
+    --bg-dark: #0f0f0f;      /* Fundo Geral */
+    --text-color: #e0e0e0;   /* Texto Claro */
+    --sidebar-bg: #111111;   /* Fundo da Barra Lateral */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif; /* Fonte padrão de leitura */
+}
+
+/* --- 2. LAYOUT PRINCIPAL --- */
+body.platform-body {
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+.platform-container {
+    display: flex;
+    min-height: 100vh; /* Ocupa a altura total da tela */
+}
+
+/* --- 3. BARRA LATERAL (SIDEBAR) --- */
+.sidebar {
+    width: 280px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    flex-shrink: 0; /* Não encolhe */
+    position: relative; /* Necessário para posicionar o Alphonse */
+    
+    /* ESPAÇO EXTRA PARA O ALPHONSE NÃO COBRIR O BOTÃO SAIR */
+    padding-bottom: 250px; 
+}
+
+/* ELEMENTO VISUAL: ALPHONSE (Rodapé da Sidebar) */
+.sidebar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 300px; /* Aumentei um pouco */
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 1;
+
+    /* CAMINHO CORRIGIDO: volta 2 pastas para achar 'images' */
+    background-image: url('../../images/Alphonse-Elric-PNG-HD.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    color: var(--ed-red);
+}
+
+.flamel-small {
+    font-size: 1.5rem;
+}
+
+.sidebar-header h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--text-color);
+}
+
+/* Lista de Módulos */
+.modules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.module-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    text-decoration: none;
+    color: var(--silver);
+    border-radius: 4px;
+    transition: 0.3s;
+    border-left: 3px solid transparent;
+    background: rgba(255,255,255,0.02);
+}
+
+.module-item:hover, .module-item.active {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: white;
+    border-left: 3px solid var(--ed-red); /* Marcação vermelha */
+}
+
+/* Módulo Bloqueado (Locked) */
+.module-item.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(1);
+}
+
+.module-number {
+    font-family: 'Cinzel', serif;
+    font-weight: bold;
+    color: var(--gold);
+    margin-right: 10px;
+}
+
+/* Perfil do Usuário (Botão Sair) */
+.user-profile {
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+    margin-top: auto; /* Empurra para o final do espaço disponível */
+    position: relative; 
+    z-index: 10; /* FICA ACIMA DA FOTO DO ALPHONSE */
+}
+
+.logout-btn {
+    display: block;
+    margin-top: 5px;
+    color: #ff4444;
+    font-size: 0.85rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* --- 4. ÁREA DE CONTEÚDO (MAIN) --- */
+.content-area {
+    flex-grow: 1; /* Ocupa o resto da tela */
+    padding: 3rem 4rem;
+    overflow-y: auto; /* Barra de rolagem interna */
+    position: relative;
+    z-index: 1;
+}
+
+/* ELEMENTO VISUAL: CÍRCULO DE TRANSMUTAÇÃO (Fundo) */
+.content-area::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    z-index: -1;
+    opacity: 0.05; /* Transparência de 5% */
+    pointer-events: none;
+    
+    /* CAMINHO CORRIGIDO */
+    background-image: url('../../images/Transmutation_Circle-removebg-preview.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    animation: rotateCircle 60s linear infinite;
+}
+
+@keyframes rotateCircle {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Cabeçalho do Conteúdo */
+.content-header {
+    border-bottom: 2px solid var(--ed-red);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.content-header h1 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.breadcrumb {
+    color: var(--silver);
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Texto da Aula */
+.lesson-container {
+    max-width: 900px;
+}
+
+.text-content h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--ed-red);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Ícone de diamante antes do título H2 */
+.text-content h2::before {
+    content: '⟡';
+    margin-right: 10px;
+    color: var(--gold);
+}
+
+.text-content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #ddd;
+    text-align: justify;
+}
+
+/* ELEMENTO VISUAL: CAIXA DE CITAÇÃO COM CHIBI */
+.quote-box {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--ed-red);
+    border-radius: 8px;
+    padding: 1.5rem;
+    padding-right: 90px; /* Espaço para o Chibi */
+    margin: 3rem 0;
+    font-style: italic;
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+}
+
+.quote-box::after {
+    content: '';
+    position: absolute;
+    top: -25px;
+    right: 10px;
+    width: 70px;
+    height: 90px;
+    
+    /* CAMINHO CORRIGIDO */
+    background-image: url('../../images/edchibi-removebg-preview.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* --- 5. VÍDEO --- */
+.video-section {
+    margin-top: 4rem;
+    border-top: 1px solid #333;
+    padding-top: 2rem;
+}
+
+.video-section h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--silver);
+    margin-bottom: 1.5rem;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background: black;
+    border: 2px solid #333;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+
+/* --- 6. RESPONSIVIDADE (CELULAR) --- */
+@media (max-width: 768px) {
+    .platform-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        padding-bottom: 1rem; /* Remove espaço do Alphonse no mobile */
+        border-right: none;
+        border-bottom: 1px solid #333;
+    }
+
+    .sidebar::after {
+        display: none; /* Esconde o Alphonse no celular para não atrapalhar */
+    }
+
+    .content-area {
+        padding: 1.5rem;
+    }
+    
+    .content-area::before {
+        width: 300px; /* Diminui o círculo de fundo */
+        height: 300px;
+    }
+    
+    .content-header h1 {
+        font-size: 1.5rem;
+    }
+}

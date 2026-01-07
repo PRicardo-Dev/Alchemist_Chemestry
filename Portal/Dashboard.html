@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Transmutação</title>
+    <link rel="icon" type="image/png" href="../images/flame-removebg-preview.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <div id="transmutation-flash"></div>
+
+    <div class="main-interface">
+        
+        <section class="modules-panel">
+            <header class="panel-header">
+                <span class="symbol">☤</span>
+                <h1>Arquivos de Estudo</h1>
+                <p>Selecione um caminho de transmutação</p>
+            </header>
+
+            <div class="modules-list">
+                <div class="module-row" onclick="openModule('../Modulos/Modulo01/index.html')">
+                    <div class="mod-number">01</div>
+                    <div class="mod-info">
+                        <h3>Estrutura Atômica</h3>
+                        <span>A Base da Matéria</span>
+                    </div>
+                    <div class="mod-status">Disponível</div>
+                </div>
+
+                <div class="module-row locked">
+                    <div class="mod-number">02</div>
+                    <div class="mod-info">
+                        <h3>Tabela Periódica</h3>
+                        <span>Elementos e Organização</span>
+                    </div>
+                    <div class="mod-status">Bloqueado</div>
+                </div>
+
+                <div class="module-row locked">
+                    <div class="mod-number">03</div>
+                    <div class="mod-info">
+                        <h3>Ligações Químicas</h3>
+                        <span>Forças de União</span>
+                    </div>
+                    <div class="mod-status">Bloqueado</div>
+                </div>
+                
+                 <div class="module-row locked">
+                    <div class="mod-number">04</div>
+                    <div class="mod-info">
+                        <h3>Estequiometria</h3>
+                        <span>Cálculos da Verdade</span>
+                    </div>
+                    <div class="mod-status">Bloqueado</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="extras-panel">
+            
+            <div class="extra-card profile" onclick="alert('Dossiê do Alquimista em construção...')">
+                <div class="icon">🛡️</div>
+                <div class="details">
+                    <h3>Dossiê do Alquimista</h3>
+                    <p>Veja seu progresso e patentes</p>
+                </div>
+            </div>
+
+            <div class="extra-card social" onclick="window.open('https://instagram.com/pedro_gmbs', '_blank')">
+                <div class="icon">📡</div> <div class="details">
+                    <h3>Redea Sociais</h3>
+                    <p>Instagram</p>
+                </div>
+            </div>
+
+            <div class="extra-card info" onclick="alert('Sobre o projeto...')">
+                <div class="icon">📜</div>
+                <div class="details">
+                    <h3>Arquivos Secretos</h3>
+                    <p>Saiba mais sobre o projeto</p>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -32,9 +32,8 @@ function performLogin() {
     flashDiv.style.animation = 'transmutationLight 1s forwards';
     document.body.appendChild(flashDiv);
 
-    setTimeout(() => {
-        // AQUI ESTÁ A MUDANÇA: Redireciona para o novo arquivo HTML
-        window.location.href = "PortaldaVerdade.html"; 
+    setTimeout(() => { 
+        window.location.href = "Portal/Dashboard.html";
     }, 500); // Espera 0.5s (tempo do clarão branco cobrir a tela)
 }
 

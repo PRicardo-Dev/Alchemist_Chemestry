@@ -147,8 +147,59 @@ body {
 }
 .active-flash { opacity: 1 !important; transition: opacity 0.5s ease-in !important; }
 
-/* RESPONSIVIDADE (Celular) */
+/* =========================================
+   RESPONSIVIDADE (CELULAR E TABLET)
+   ========================================= */
 @media (max-width: 850px) {
-    .main-interface { flex-direction: column; overflow-y: auto; }
-    .modules-panel, .extras-panel { width: 100%; height: auto; border: none; }
+    
+    /* 1. Libera a rolagem da página (Adeus tela presa!) */
+    body {
+        overflow-y: auto; /* Permite rolar para baixo */
+        height: auto;     /* A altura cresce conforme o conteúdo */
+    }
+
+    /* 2. Muda a direção para Coluna (Um embaixo do outro) */
+    .main-interface {
+        flex-direction: column;
+        height: auto;     /* Remove a altura fixa */
+        backdrop-filter: none; /* Remove efeito pesado para celular */
+        background-color: rgba(10, 10, 10, 0.9); /* Fundo escuro sólido */
+    }
+
+    /* 3. Painel de Módulos (Parte de Cima) */
+    .modules-panel {
+        width: 100%;
+        height: auto;
+        border-right: none; /* Remove linha lateral */
+        border-bottom: 2px solid var(--ed-red); /* Adiciona linha embaixo */
+        padding: 2rem 1rem; /* Espaçamento menor */
+        overflow-y: visible; /* Remove barra de rolagem interna dupla */
+    }
+
+    /* 4. Painel de Extras (Parte de Baixo) */
+    .extras-panel {
+        width: 100%;
+        height: auto;
+        padding: 2rem 1rem;
+        background: transparent; /* Remove o fundo diferente */
+        gap: 15px;
+    }
+
+    /* 5. Ajustes de Tamanho de Texto */
+    .panel-header h1 {
+        font-size: 1.6rem; /* Título menor para não quebrar */
+    }
+
+    .panel-header p {
+        font-size: 0.9rem;
+    }
+
+    /* Cartões menores */
+    .extra-card {
+        padding: 1rem;
+    }
+    
+    .extra-card h3 {
+        font-size: 0.9rem;
+    }
 }

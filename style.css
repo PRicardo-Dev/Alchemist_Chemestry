@@ -378,3 +378,53 @@ body.platform-body {
         padding: 1.5rem;
     }
 }
+
+/* correção de bug: olhinho da senha
+
+1. Remove o olho gerado no navegador*/
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
+/* 2. Wrapper para alinhar o input e o olho */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* 3. Estilo do Olho */
+#toggle-pass {
+    position: absolute; 
+    right: 15px;        
+    top: 50%;           
+    transform: translateY(-50%); 
+    
+    cursor: pointer;    
+    font-size: 1.2rem;  
+    filter: grayscale(100%);
+    transition: 0.3s;
+    user-select: none;  
+
+    /* NOVO: Começa invisível e intocável */
+    opacity: 0;
+    pointer-events: none; /* Impede clicar no vazio */
+}
+
+/* CLASSE NOVA: Adicionada pelo JS quando tem texto */
+#toggle-pass.visible {
+    opacity: 1;            /* Fica visível */
+    pointer-events: all;   /* Volta a ser clicável */
+}   
+
+/* Quando passar o mouse, fica Dourado (Ativo) */
+#toggle-pass:hover {
+    filter: none; /* Volta a cor original */
+    text-shadow: 0 0 10px var(--gold);
+}
+
+/* Vai fazer mágica com JS */
+.eye-open {
+    filter: sepia(100%) hue-rotate(-50deg) saturate(600%) !important; /* Efeito Dourado Intenso */
+    text-shadow: 0 0 15px var(--ed-red);
+}

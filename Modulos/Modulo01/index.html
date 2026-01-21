@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo 01 - A Base da Matéria</title>
-    <link rel="icon" type="image/png" href="../../images/flame-removebg-preview.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" href="../../images/favicon.png"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
-</head>
 </head>
 <body class="platform-body">
 
     <div class="platform-container">
         
-        <aside class="sidebar">
+        <aside class="sidebar left-sidebar">
             <div class="sidebar-header">
                 <span class="flamel-small">☤</span>
                 <h3>Arquivos</h3>
             </div>
 
-            <a href="../../Portal/Dashboard.html" class="back-link" style="color: #888; text-decoration: none; margin-bottom: 20px; display: block; font-size: 0.9rem;">
+            <a href="../../Portal/Dashboard.html" class="back-link">
                 ← Voltar ao Portal
             </a>
 
@@ -51,6 +49,16 @@
 
         <main class="content-area">
             
+            <div class="control-bar">
+            <button class="toggle-btn left-toggle" onclick="toggleSidebar('left')">
+            ☰ Menu
+            </button>
+        
+            <button class="toggle-btn right-toggle" onclick="toggleSidebar('right')">
+            Materiais ⬇
+            </button>
+            </div>
+
             <header class="content-header">
                 <h1>Módulo 01: A Base da Matéria</h1>
                 <div class="breadcrumb">Química Geral > Átomos > Introdução</div>
@@ -87,7 +95,44 @@
 
             </div>
         </main>
-    </div>
 
+        <aside class="sidebar right-sidebar">
+            <div class="sidebar-header">
+                <h3>Transmutação Prática</h3> </div>
+            
+            <p class="sidebar-desc">Baixe os materiais para fixar o conhecimento equivalente.</p>
+
+            <div class="resources-list">
+                <a href="#" class="resource-item">
+                    <span class="res-icon">📄</span>
+                    <div class="res-info">
+                        <h4>Lista de Exercícios I</h4>
+                        <span>PDF - Introdução</span>
+                    </div>
+                    <span class="download-arrow">⬇</span>
+                </a>
+
+                <a href="#" class="resource-item">
+                    <span class="res-icon">🧪</span>
+                    <div class="res-info">
+                        <h4>Resumo da Aula</h4>
+                        <span>Mapa Mental</span>
+                    </div>
+                    <span class="download-arrow">⬇</span>
+                </a>
+
+                <a href="#" class="resource-item secret">
+                    <span class="res-icon">👁️</span>
+                    <div class="res-info">
+                        <h4>Gabarito Comentado</h4>
+                        <span>Apenas Alquimistas de Estado</span>
+                    </div>
+                    <span class="lock-icon">🔒</span>
+                </a>
+            </div>
+        </aside>
+
+    </div>
+            <script src="script.js"></script>
 </body>
 </html>
